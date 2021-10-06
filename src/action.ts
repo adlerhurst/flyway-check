@@ -6,7 +6,7 @@ const isPullRequest = () => {
 }
 
 const checkoutRef = () => {
-  // TODO: implement checkout
+  // TODO: implement checkout a
 }
 
 async function run(): Promise<void> {
