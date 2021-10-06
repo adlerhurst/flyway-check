@@ -16,12 +16,12 @@ async function run(): Promise<void> {
 
     console.log(`GET ${github.context.payload.repository?.trees_url}`)
 
-    const trees = await client.request(
-      `GET ${github.context.payload.repository?.trees_url}`
-    )
-    console.log(
-      `The event payload: ${JSON.stringify(trees.data, undefined, 2)}`
-    )
+    // const trees = await client.request(
+    //   `GET ${github.context.payload.repository?.trees_url}`
+    // )
+    // console.log(
+    //   `The event payload: ${JSON.stringify(trees.data, undefined, 2)}`
+    // )
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`)
