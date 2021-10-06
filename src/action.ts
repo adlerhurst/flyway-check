@@ -16,6 +16,14 @@ async function run(): Promise<void> {
 
     console.log(`GET ${github.context.payload.repository?.trees_url}`)
 
+    const trees = await client.rest.git.getTree({
+      owner: github.context.payload.repository?.owner.name || '',
+      repo: github.context.payload.repository?.name || '',
+      tree_sha: github.context.sha
+    })
+
+    console.log(`trees: ${trees}`)
+
     // const trees = await client.request(
     //   `GET ${github.context.payload.repository?.trees_url}`
     // )
