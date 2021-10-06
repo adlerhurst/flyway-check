@@ -14,6 +14,8 @@ async function run(): Promise<void> {
     const token = core.getInput('tkn')
     const client = github.getOctokit(token)
 
+    console.log(`GET ${github.context.payload.repository?.trees_url}`)
+
     const trees = await client.request(
       `GET ${github.context.payload.repository?.trees_url}`
     )
