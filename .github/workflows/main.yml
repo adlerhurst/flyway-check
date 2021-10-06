@@ -9,5 +9,5 @@ jobs:
         id: hello
         uses: adlerhurst/semverify@init
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          tkn: ${{ secrets.GITHUB_TOKEN }}
           who-to-greet: 'Mona the Octocat'

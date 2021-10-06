@@ -11,7 +11,7 @@ const checkoutRef = () => {
 
 async function run(): Promise<void> {
   try {
-    const token = core.getInput('token')
+    const token = core.getInput('tkn')
     const client = github.getOctokit(token)
 
     const trees = await client.request(
@@ -22,7 +22,7 @@ async function run(): Promise<void> {
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`)
   } catch (error: any) {
-    core.setFailed(error.message)
+    core.setFailed(`something happened: ${error.message}`)
   }
 }
 

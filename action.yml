@@ -1,8 +1,10 @@
 name: 'Semverify'
 description: 'checks if each semantic version exists exactly once'
 inputs:
-  token:
+  tkn:
     description: token to create the octocat client
+    required: false
+    default: ''
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
