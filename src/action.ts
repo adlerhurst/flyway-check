@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 
 const isPullRequest = () => {
-  return github.context.payload.pull_request === undefined
+  return github.context.payload.pull_request !== undefined
 }
 
 async function run(): Promise<void> {
