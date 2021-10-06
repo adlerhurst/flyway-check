@@ -40,16 +40,18 @@ const github = __importStar(__nccwpck_require__(5438));
 const isPullRequest = () => {
     return github.context.payload.pull_request !== undefined;
 };
+const checkoutRef = () => {
+    // TODO: implement checkout
+};
 function run() {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // `who-to-greet` input defined in action metadata file
-            const nameToGreet = core.getInput('who-to-greet');
-            console.log(`Hello ${nameToGreet}!`);
-            const time = new Date().toTimeString();
-            core.setOutput('time', time);
+            const token = core.getInput('token');
+            const client = github.getOctokit(token);
+            const trees = yield client.request(`GET ${(_a = github.context.payload.repository) === null || _a === void 0 ? void 0 : _a.trees_url}`);
+            console.log(`The event payload: ${JSON.stringify(trees, undefined, 2)}`);
             // Get the JSON webhook payload for the event that triggered the workflow
-            console.log(`is pull request ${isPullRequest()}`);
             const payload = JSON.stringify(github.context.payload, undefined, 2);
             console.log(`The event payload: ${payload}`);
         }

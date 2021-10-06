@@ -5,15 +5,20 @@ const isPullRequest = () => {
   return github.context.payload.pull_request !== undefined
 }
 
+const checkoutRef = () => {
+  // TODO: implement checkout
+}
+
 async function run(): Promise<void> {
   try {
-    // `who-to-greet` input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet')
-    console.log(`Hello ${nameToGreet}!`)
-    const time = new Date().toTimeString()
-    core.setOutput('time', time)
+    const token = core.getInput('token')
+    const client = github.getOctokit(token)
+
+    const trees = await client.request(
+      `GET ${github.context.payload.repository?.trees_url}`
+    )
+    console.log(`The event payload: ${JSON.stringify(trees, undefined, 2)}`)
     // Get the JSON webhook payload for the event that triggered the workflow
-    console.log(`is pull request ${isPullRequest()}`)
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`)
   } catch (error: any) {
