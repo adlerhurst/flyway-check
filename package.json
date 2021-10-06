@@ -1,0 +1,28 @@
+{
+  "name": "semverify",
+  "version": "0.1.0",
+  "description": "github action which checks if each semantic version exists exactly once",
+  "main": "semverify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adlerhurst/semverify.git"
+  },
+  "keywords": [
+    "semver",
+    "github",
+    "action"
+  ],
+  "author": "adlerhurst",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/adlerhurst/semverify/issues"
+  },
+  "homepage": "https://github.com/adlerhurst/semverify#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0"
+  }
+}
