@@ -14,15 +14,13 @@ async function run(): Promise<void> {
     const token = core.getInput('tkn')
     const client = github.getOctokit(token)
 
-    console.log(`GET ${github.context.payload.repository?.trees_url}`)
-
     const trees = await client.rest.git.getTree({
       owner: github.context.payload.repository?.owner.name || '',
       repo: github.context.payload.repository?.name || '',
       tree_sha: github.context.sha
     })
 
-    console.log(`trees: ${trees}`)
+    console.log(`trees: ${JSON.stringify(trees, undefined, 2)}`)
 
     // const trees = await client.request(
     //   `GET ${github.context.payload.repository?.trees_url}`
