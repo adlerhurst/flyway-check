@@ -16,7 +16,7 @@ try {
     core_1.default.setOutput("time", time);
     // Get the JSON webhook payload for the event that triggered the workflow
     var payload = JSON.stringify(github_1.default.context.payload, undefined, 2);
-    console.log("The event payload: " + payload);
+    //   console.log(`The event payload: ${payload}`);
     console.log("is pull request " + isPullRequest());
 }
 catch (error) {
