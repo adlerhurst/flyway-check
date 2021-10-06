@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const github = __importStar(__nccwpck_require__(5438));
 const isPullRequest = () => {
-    return github.context.payload.pull_request === undefined;
+    return github.context.payload.pull_request !== undefined;
 };
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -49,9 +49,9 @@ function run() {
             const time = new Date().toTimeString();
             core.setOutput('time', time);
             // Get the JSON webhook payload for the event that triggered the workflow
+            console.log(`is pull request ${isPullRequest()}`);
             const payload = JSON.stringify(github.context.payload, undefined, 2);
             console.log(`The event payload: ${payload}`);
-            console.log(`is pull request ${isPullRequest()}`);
         }
         catch (error) {
             core.setFailed(error.message);

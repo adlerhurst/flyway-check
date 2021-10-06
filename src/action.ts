@@ -2,7 +2,7 @@ import * as core from '@actions/core'
 import * as github from '@actions/github'
 
 const isPullRequest = () => {
-  return github.context.payload.pull_request === undefined
+  return github.context.payload.pull_request !== undefined
 }
 
 async function run(): Promise<void> {
@@ -16,7 +16,6 @@ async function run(): Promise<void> {
     console.log(`is pull request ${isPullRequest()}`)
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`)
-
   } catch (error: any) {
     core.setFailed(error.message)
   }
